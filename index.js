@@ -54,3 +54,56 @@ const Meal = (() => {
     }
   };
 })();
+
+const Customer = (() => {
+  let customerIds = 1;
+
+  return class {
+    constructor(name, neighborhoodId) {
+      this.id = customerIds++;
+      this.name = name;
+      this.neighborhoodId = neighborhoodId;
+
+      store.customers.push(this);
+    }
+
+    deliveries() {
+      return store.deliveries.filter(delivery => delivery.customerId === this.id);
+    }
+
+    meals() {
+      return this.deliveries().map(delivery => delivery.meal());
+    }
+
+    totalSpent() {
+      return this.meals().reduce((total, meal) => (total += meal.price), 0);
+    }
+  };
+})();
+
+const Delivery = (() => {
+  let deliveryIds = 1;
+
+  return class {
+    constructor(mealId, neighborhoodId, customerId) {
+      this.id = deliveryIds++;
+      this.mealId = mealId;
+      this.neighborhoodId = neighborhoodId;
+      this.customerId = customerId;
+
+      store.deliveries.push(this);
+    }
+
+    meal() {
+      return store.meals.find(meal => meal.id === this.mealId);
+    }
+
+    neighborhood() {
+      return store.neighborhood.find(neighborhood => neighborhood.id === this.neighborhoodId);
+    }
+
+    customer() {
+      return store.customer.find(customer => customer.id === this.customerId);
+    }
+  };
+})();
