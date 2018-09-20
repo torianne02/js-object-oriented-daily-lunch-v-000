@@ -17,7 +17,7 @@ const Neighborhood = (() => {
     }
 
     meals() {
-      const allMeals = this.costumers().map(customer => customer.meals());
+      const allMeals = this.custumers().map(customer => customer.meals());
       const merged = [].concat.apply([], allMeals);
       return [...new Set(merged)];
     }
