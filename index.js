@@ -45,7 +45,7 @@ const Meal = (() => {
     }
 
     customers() {
-      const allCustomers = this.deliveries().map(delivery => delivery.customerId());
+      const allCustomers = this.deliveries().map(delivery => delivery.customer());
       return [...new Set(allCustomers)];
     }
 
@@ -99,7 +99,7 @@ const Delivery = (() => {
     }
 
     neighborhood() {
-      return store.neighborhood.find(neighborhood => neighborhood.id === this.neighborhoodId);
+      return store.neighborhoods.find(neighborhood => neighborhood.id === this.neighborhoodId);
     }
 
     customer() {
