@@ -3,6 +3,7 @@ let store = { neighborhoods: [], meals: [], customers: [], deliveries: [] };
 
 const Neighborhood = (() => {
   let neighborhoodIds = 1;
+  
   return class {
     constructor(name) {
       this.id = neighborhoodIds++;
@@ -26,3 +27,8 @@ const Neighborhood = (() => {
     }
   };
 })();
+
+const Meal = (() => {
+  let mealIds = 1;
+
+}
