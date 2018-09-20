@@ -12,7 +12,7 @@ const Neighborhood = (() => {
       store.neighborhoods.push(this);
     }
 
-    costumers() {
+    customers() {
       return store.customers.filter(customer => customer.neighborhoodId === this.id);
     }
 
