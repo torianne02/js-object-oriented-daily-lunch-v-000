@@ -103,7 +103,7 @@ const Delivery = (() => {
     }
 
     customer() {
-      return store.customer.find(customer => customer.id === this.customerId);
+      return store.customers.find(customer => customer.id === this.customerId);
     }
   };
 })();
